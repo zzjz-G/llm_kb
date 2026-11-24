@@ -1,0 +1,167 @@
+@import url("https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@600;700&display=swap");
+@import './tailwind-theme.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+}
+
+.font-display {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+.lucide {
+  stroke-width: 1.5px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+}
+
+/* 表格选中行 - 实验室记录本侧边批注感 */
+.table-row-selected > td:first-child {
+  border-left: 2px solid var(--primary);
+  padding-left: 10px;
+}
+
+/* 状态标签样式 */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.status-badge.pending {
+  background: hsl(42 90% 92%);
+  color: hsl(32 80% 35%);
+}
+
+.status-badge.approved {
+  background: hsl(145 50% 92%);
+  color: hsl(145 65% 30%);
+}
+
+.status-badge.rejected {
+  background: hsl(0 60% 94%);
+  color: hsl(0 70% 40%);
+}
+
+.status-badge.stored {
+  background: hsl(200 60% 92%);
+  color: hsl(200 70% 35%);
+}
+
+.status-badge.completed {
+  background: hsl(215 15% 92%);
+  color: hsl(215 20% 35%);
+}
+
+.status-badge.hazardous {
+  background: hsl(15 80% 92%);
+  color: hsl(15 70% 40%);
+}
+
+.status-badge.active {
+  background: hsl(145 50% 92%);
+  color: hsl(145 65% 30%);
+}
+
+.status-badge.disabled {
+  background: hsl(210 10% 92%);
+  color: hsl(215 10% 40%);
+}
+
+/* 表格全局覆盖 */
+.ant-table {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--foreground);
+  background: var(--card);
+}
+
+.ant-table-thead > tr > th {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  background: var(--muted) !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: 8px 12px !important;
+}
+
+.ant-table-tbody > tr > td {
+  border-color: var(--border) !important;
+  padding: 8px 12px !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: var(--accent) !important;
+}
+
+.ant-table-tbody > tr.ant-table-row-selected > td {
+  background: hsl(200 60% 96%) !important;
+}
+
+.ant-table-tbody > tr.ant-table-row-selected > td:first-child {
+  border-left: 2px solid var(--primary);
+  padding-left: 10px;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(210 15% 80%);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(210 10% 65%);
+}
