@@ -1,6 +1,5 @@
-import { axiosForBackend } from '@lark-apaas/client-toolkit/utils/getAxiosForBackend';
-import { resolveAppUrl } from '@lark-apaas/client-toolkit/utils/resolveAppUrl';
-import { logger } from '@lark-apaas/client-toolkit/logger';
+import apiClient from '@client/src/lib/axios';
+import { logger } from '@client/src/lib/logger';
 import type {
   LoginRequest,
   LoginResponse,
@@ -95,8 +94,9 @@ async function handleAuthExpired(): Promise<void> {
   if (authClearing) return;
   authClearing = true;
   clearAuth();
+  const basePath = process.env.CLIENT_BASE_PATH || '/';
   // eslint-disable-next-line no-restricted-syntax
-  window.location.href = resolveAppUrl('/login');
+  window.location.href = basePath === '/' ? '/login' : `${basePath}/login`;
 }
 
 async function request<T>(config: {
@@ -108,7 +108,7 @@ async function request<T>(config: {
   silent?: boolean;
 }): Promise<T> {
   try {
-    const response = await axiosForBackend({
+    const response = await apiClient({
       url: config.url,
       method: config.method,
       data: config.data,
@@ -356,7 +356,7 @@ export const inventoryApi = {
   },
   downloadTemplate(): void {
     const url = `/api/inventory/template`;
-    axiosForBackend
+    apiClient
       .get(url, {
         headers: getAuthHeaders(),
         responseType: 'blob',
@@ -448,7 +448,7 @@ export const exportApi = {
   },
   downloadOrder(id: string): void {
     const url = `/api/export/order/${id}`;
-    axiosForBackend
+    apiClient
       .get(url, {
         headers: getAuthHeaders(),
         responseType: 'blob',
@@ -473,7 +473,7 @@ export const exportApi = {
       });
   },
   downloadInventory(): void {
-    axiosForBackend
+    apiClient
       .get('/api/export/inventory', {
         headers: getAuthHeaders(),
         responseType: 'blob',

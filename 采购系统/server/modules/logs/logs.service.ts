@@ -1,11 +1,9 @@
 import { Injectable, Inject } from '@nestjs/common';
-import {
-  DRIZZLE_DATABASE,
-  type PostgresJsDatabase,
-} from '@lark-apaas/fullstack-nestjs-core';
+import { DRIZZLE_DATABASE } from '@server/common/database/drizzle.constants';
+import type { PostgresJsDatabase } from '@server/common/database/database.module';
 import { eq, and, ilike, count, desc } from 'drizzle-orm';
 import type { SQL } from 'drizzle-orm';
-import { operationLogs } from '@server/database/schema';
+import { operationLogs } from '@server/database/tables';
 import type {
   OperationLog,
   LogListResponse,

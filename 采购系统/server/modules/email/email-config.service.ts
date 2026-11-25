@@ -1,7 +1,8 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { DRIZZLE_DATABASE, type PostgresJsDatabase } from '@lark-apaas/fullstack-nestjs-core';
+import { DRIZZLE_DATABASE } from '@server/common/database/drizzle.constants';
+import type { PostgresJsDatabase } from '@server/common/database/database.module';
 import { eq, desc } from 'drizzle-orm';
-import { emailConfig } from '@server/database/schema';
+import { emailConfig } from '@server/database/tables';
 import type {
   EmailConfigInfo,
   SaveEmailConfigRequest,

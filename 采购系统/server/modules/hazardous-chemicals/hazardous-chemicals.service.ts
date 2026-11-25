@@ -4,13 +4,11 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import {
-  DRIZZLE_DATABASE,
-  type PostgresJsDatabase,
-} from '@lark-apaas/fullstack-nestjs-core';
+import { DRIZZLE_DATABASE } from '@server/common/database/drizzle.constants';
+import type { PostgresJsDatabase } from '@server/common/database/database.module';
 import { sql, desc, count, and } from 'drizzle-orm';
 import type { SQL } from 'drizzle-orm';
-import { hazardousChemicals } from '@server/database/schema';
+import { hazardousChemicals } from '@server/database/tables';
 import { LogService } from '@server/common/log/log.service';
 import type {
   HazardousChemical,

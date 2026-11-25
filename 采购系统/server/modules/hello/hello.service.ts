@@ -1,7 +1,8 @@
 // /* 模板代码 仅作示例 */
 // import { Injectable, Inject, Logger } from '@nestjs/common';
-// import { DRIZZLE_DATABASE, type PostgresJsDatabase } from '@lark-apaas/fullstack-nestjs-core';
-// import { record } from '@server/database/schema';
+// import { DRIZZLE_DATABASE } from '@server/common/database/drizzle.constants';
+// import type { PostgresJsDatabase } from '@server/common/database/database.module';
+// import { record } from '@server/database/tables';
 // import { eq, and, desc } from 'drizzle-orm';
 
 // @Injectable()

@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import * as jwt from 'jsonwebtoken';
 
 export interface JwtPayload {
@@ -8,19 +9,23 @@ export interface JwtPayload {
   name: string;
 }
 
-// 生产环境务必通过环境变量 JWT_SECRET 设置随机密钥；下面的默认值仅用于本地开发
-const JWT_SECRET = process.env.JWT_SECRET || 'dev-only-secret-change-me';
-const JWT_EXPIRES_IN = '7d';
-
 @Injectable()
 export class JwtService {
+  private readonly secret: string;
+  private readonly expiresIn: number;
+
+  constructor(private configService: ConfigService) {
+    this.secret = this.configService.get<string>('JWT_SECRET') || 'lab_inventory_management_secret_key_2024';
+    this.expiresIn = 7 * 24 * 60 * 60;
+  }
+
   sign(payload: JwtPayload): string {
-    return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
+    return jwt.sign(payload, this.secret, { expiresIn: this.expiresIn });
   }
 
   verify(token: string): JwtPayload | null {
     try {
-      return jwt.verify(token, JWT_SECRET) as JwtPayload;
+      return jwt.verify(token, this.secret) as JwtPayload;
     } catch {
       return null;
     }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Table, type TableProps } from '@lark-apaas/client-toolkit/antd-table';
+import { Table, type TableProps } from '@client/src/components/ui/antd-table';
 import { ArrowLeft, Trash2, Check, X, PackageOpen, ClipboardCheck } from 'lucide-react';
 import { toast } from 'sonner';
-import { logger } from '@lark-apaas/client-toolkit/logger';
+import { logger } from '@client/src/lib/logger';
 
 import { Button } from '@client/src/components/ui/button';
 import { Input } from '@client/src/components/ui/input';

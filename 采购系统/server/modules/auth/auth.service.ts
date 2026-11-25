@@ -1,8 +1,9 @@
 import { Injectable, Inject, UnauthorizedException } from '@nestjs/common';
-import { DRIZZLE_DATABASE, type PostgresJsDatabase } from '@lark-apaas/fullstack-nestjs-core';
+import { DRIZZLE_DATABASE } from '@server/common/database/drizzle.constants';
+import type { PostgresJsDatabase } from '@server/common/database/database.module';
 import * as bcrypt from 'bcryptjs';
 import { eq } from 'drizzle-orm';
-import { labUsers } from '@server/database/schema';
+import { labUsers } from '@server/database/tables';
 import { JwtService } from '@server/common/jwt/jwt.service';
 import type { UserInfo, LoginResponse } from '@shared/api.interface';
 import type { UserRole, UserStatus } from '@shared/api.interface';

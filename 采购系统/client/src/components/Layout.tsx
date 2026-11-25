@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '@client/src/contexts/AuthContext';
 import { usersApi, purchaseApi } from '@client/src/api';
-import { logger } from '@lark-apaas/client-toolkit/logger';
+import { logger } from '@client/src/lib/logger';
 
 interface NavItem {
   to: string;

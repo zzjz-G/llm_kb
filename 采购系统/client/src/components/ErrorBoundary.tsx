@@ -1,5 +1,5 @@
 import React from 'react';
-import { logger } from '@lark-apaas/client-toolkit/logger';
+import { logger } from '@client/src/lib/logger';
 import { Button } from '@client/src/components/ui/button';
 import { AlertTriangle } from 'lucide-react';
 

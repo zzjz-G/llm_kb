@@ -1,7 +1,12 @@
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
-import { PlatformModule } from '@lark-apaas/fullstack-nestjs-core';
+import { ConfigModule } from '@nestjs/config';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { LoggerModule } from '@lark-apaas/nestjs-logger';
 
+import { DatabaseModule } from './common/database/database.module';
+import { JwtModule } from './common/jwt/jwt.module';
+import { LogModule } from './common/log/log.module';
 import { GlobalExceptionFilter } from './common/filters/exception.filter';
 import { RolesGuard } from './common/jwt/roles.guard';
 import { ViewModule } from './modules/view/view.module';
@@ -16,10 +21,14 @@ import { EmailModule } from './modules/email/email.module';
 
 @Module({
   imports: [
-    // 平台 Module，提供平台能力
-    PlatformModule.forRoot(),
-    // ====== @route-section: business-modules START ======
-    // Place all business modules here.Do NOT add fallback modules here.
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: ['.env'],
+    }),
+    LoggerModule,
+    DatabaseModule,
+    JwtModule,
+    LogModule,
     PurchaseModule,
     AuthModule,
     UsersModule,
@@ -28,10 +37,6 @@ import { EmailModule } from './modules/email/email.module';
     ExportModule,
     HazardousChemicalsModule,
     EmailModule,
-    // ====== @route-section: business-modules END ======
-
-    // ⚠️ @route-order: last
-    // ViewModule is the fallback route module, must be registered last.
     ViewModule,
   ],
   providers: [

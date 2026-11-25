@@ -5,13 +5,11 @@ import {
   ConflictException,
   BadRequestException,
 } from '@nestjs/common';
-import {
-  DRIZZLE_DATABASE,
-  type PostgresJsDatabase,
-} from '@lark-apaas/fullstack-nestjs-core';
+import { DRIZZLE_DATABASE } from '@server/common/database/drizzle.constants';
+import type { PostgresJsDatabase } from '@server/common/database/database.module';
 import { eq, and, ilike, sql, count, desc } from 'drizzle-orm';
 import type { SQL } from 'drizzle-orm';
-import { inventory } from '@server/database/schema';
+import { inventory } from '@server/database/tables';
 import { LogService } from '@server/common/log/log.service';
 import { HazardousChemicalsService } from '@server/modules/hazardous-chemicals/hazardous-chemicals.service';
 import * as XLSX from 'xlsx';

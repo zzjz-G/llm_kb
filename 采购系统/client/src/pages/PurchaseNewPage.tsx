@@ -6,7 +6,7 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Plus, Trash2, AlertTriangle, ShoppingCart } from 'lucide-react';
 import { toast } from 'sonner';
-import { logger } from '@lark-apaas/client-toolkit/logger';
+import { logger } from '@client/src/lib/logger';
 
 import { Button } from '@client/src/components/ui/button';
 import {

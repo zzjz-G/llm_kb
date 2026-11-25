@@ -1,7 +1,6 @@
 // /* 模板代码 仅作示例 */
 // import { Controller, Get, Query, Req } from '@nestjs/common';
 // import type { Request } from 'express';
-// import { NeedLogin } from '@lark-apaas/fullstack-nestjs-core';
 // import { HelloService } from './hello.service';
 // import { HelloListQueryDto } from './hello.dto';
 

@@ -4,14 +4,12 @@ import {
   NotFoundException,
   ForbiddenException,
 } from '@nestjs/common';
-import {
-  DRIZZLE_DATABASE,
-  type PostgresJsDatabase,
-} from '@lark-apaas/fullstack-nestjs-core';
+import { DRIZZLE_DATABASE } from '@server/common/database/drizzle.constants';
+import type { PostgresJsDatabase } from '@server/common/database/database.module';
 import { eq, and, ilike, desc, sql } from 'drizzle-orm';
 import type { SQL } from 'drizzle-orm';
 import * as XLSX from 'xlsx';
-import { purchaseOrders, purchaseItems, labUsers, inventory } from '@server/database/schema';
+import { purchaseOrders, purchaseItems, labUsers, inventory } from '@server/database/tables';
 import {
   MATERIAL_CATEGORY_LABELS,
   HAZARDOUS_LABELS,

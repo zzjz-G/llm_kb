@@ -5,10 +5,11 @@ import {
   ForbiddenException,
   Logger,
 } from '@nestjs/common';
-import { DRIZZLE_DATABASE, type PostgresJsDatabase } from '@lark-apaas/fullstack-nestjs-core';
+import { DRIZZLE_DATABASE } from '@server/common/database/drizzle.constants';
+import type { PostgresJsDatabase } from '@server/common/database/database.module';
 import { Inject } from '@nestjs/common';
 import { eq, and, ilike, or, desc, count, inArray, gte, lt } from 'drizzle-orm';
-import { purchaseOrders, purchaseItems, inventory, labUsers } from '@server/database/schema';
+import { purchaseOrders, purchaseItems, inventory, labUsers } from '@server/database/tables';
 import { LogService } from '@server/common/log/log.service';
 import { HazardousChemicalsService } from '@server/modules/hazardous-chemicals/hazardous-chemicals.service';
 import { EmailService } from '@server/modules/email/email.service';

@@ -1,4 +1,4 @@
-import { NotFoundRender } from "@lark-apaas/client-toolkit/components/NotFoundRender";
+import { NotFoundRender } from '@client/src/components/NotFoundRender';
 
 const NotFound = () => {
   return (

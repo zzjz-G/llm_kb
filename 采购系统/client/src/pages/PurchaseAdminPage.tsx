@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Table, TableProps } from '@lark-apaas/client-toolkit/antd-table';
+import { Table, type TableProps } from '@client/src/components/ui/antd-table';
 import { Search, Download, Eye, CheckCircle, XCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { Input } from '@client/src/components/ui/input';
