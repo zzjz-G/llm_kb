@@ -9,7 +9,7 @@
     "dev:server": "node --watch-path=dist/server --watch-path=dist/shared dist/server/bootstrap.js",
     "dev:client": "vite --config vite.config.ts",
     "build": "npm run build:client && npm run build:server",
-    "build:server": "tsc -p tsconfig.standalone.json",
+    "build:server": "tsc -p tsconfig.standalone.json && tsc-alias -p tsconfig.standalone.json",
     "build:client": "vite build --config vite.config.ts",
     "start": "NODE_ENV=production node dist/server/bootstrap.js",
     "db:migrate": "node server/database/migrate.js",

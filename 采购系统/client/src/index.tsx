@@ -3,9 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import { AppContainer } from '@lark-apaas/client-toolkit/components/AppContainer';
-import { ErrorRender } from '@lark-apaas/client-toolkit/components/ErrorRender';
-
 import RoutesComponent from './app.tsx';
 import './index.css';
 import { createPortal } from 'react-dom';
@@ -16,19 +13,18 @@ const CLIENT_BASE_PATH = process.env.CLIENT_BASE_PATH || '/';
 const MainApp = () => {
   return (
     <BrowserRouter basename={CLIENT_BASE_PATH}>
-      <AppContainer defaultTheme="light">
-        <ErrorBoundary
-          fallbackRender={({ error, resetErrorBoundary }) => (
-            <ErrorRender
-              error={error as Error}
-              resetErrorBoundary={resetErrorBoundary}
-            />
-          )}
-        >
-          <RoutesComponent />
-          {createPortal(<Toaster />, document.body)}
-        </ErrorBoundary>
-      </AppContainer>
+      <ErrorBoundary
+        fallbackRender={({ error, resetErrorBoundary }) => (
+          <div role="alert" style={{ padding: '24px' }}>
+            <h2>页面出错了</h2>
+            <pre style={{ whiteSpace: 'pre-wrap' }}>{error?.message}</pre>
+            <button onClick={resetErrorBoundary}>重试</button>
+          </div>
+        )}
+      >
+        <RoutesComponent />
+        {createPortal(<Toaster />, document.body)}
+      </ErrorBoundary>
     </BrowserRouter>
   );
 };

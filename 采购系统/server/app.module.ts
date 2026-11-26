@@ -1,8 +1,6 @@
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { LoggerModule } from '@lark-apaas/nestjs-logger';
 
 import { DatabaseModule } from './common/database/database.module';
 import { JwtModule } from './common/jwt/jwt.module';
@@ -25,7 +23,6 @@ import { EmailModule } from './modules/email/email.module';
       isGlobal: true,
       envFilePath: ['.env'],
     }),
-    LoggerModule,
     DatabaseModule,
     JwtModule,
     LogModule,
