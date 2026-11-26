@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const CLIENT_BASE_PATH = process.env.CLIENT_BASE_PATH || '/';
-const baseURL = CLIENT_BASE_PATH === '/' ? '/api' : `${CLIENT_BASE_PATH}/api`;
+// 接口 url 已统一包含 /api 前缀，baseURL 只保留基础路径，避免拼成 /api/api
+const baseURL = CLIENT_BASE_PATH;
 
 const apiClient = axios.create({
   baseURL,
